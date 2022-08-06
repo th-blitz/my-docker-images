@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+arg1=$1
+
