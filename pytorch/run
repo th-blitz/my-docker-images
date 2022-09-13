@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+docker run --rm -d -t --name=test -p 8888:8888 --gpus all test
