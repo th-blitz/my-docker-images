@@ -34,6 +34,7 @@ RUN pip install .
 
 WORKDIR /home
 RUN mkdir -p mount
-COPY pip_install_rodnet.sh /home
 WORKDIR /home/mount
+
+
 
