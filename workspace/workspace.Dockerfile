@@ -19,6 +19,11 @@ RUN apt install libffi-dev
 RUN apt install wget -y
 RUN apt install curl -y
 
+
+RUN apt-get install -y libqt5gui5
+RUN apt-get install libx11-dev
+RUN apt-get install python3-tk
+
 RUN apt-get install ffmpeg libsm6 libxext6 -y
 
 RUN apt install valgrind -y 
