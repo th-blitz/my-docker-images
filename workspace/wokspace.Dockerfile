@@ -1,11 +1,11 @@
 
-FROM ubuntu:kinetic
+FROM ubuntu:rolling
 
 LABEL MAINTAINER="https://github.com/ThBlitz | PreethamRakshith11@gmail.com"
-LABEL VERSION="0.2"
-LABEL DESCRIPTION="ubuntu:kinetic | gcc & g++ (latest) | python-3.9.15 | node.js-16.18.0 | Rust 1.62.1 (latest)"
+LABEL VERSION="0.3"
+LABEL DESCRIPTION="ubuntu:rolling | gcc & g++ (latest) | python-3.9.18 | node.js-20.9.0 | Rust (latest always i guess)"
 
-RUN apt-get update
+RUN apt-get update 
 RUN apt-get upgrade -y
 
 RUN apt install build-essential -y
@@ -19,28 +19,23 @@ RUN apt install libffi-dev
 RUN apt install wget -y
 RUN apt install curl -y
 
-
-RUN apt-get install -y libqt5gui5
-RUN apt-get install libx11-dev
-RUN apt-get install python3-tk
-
 RUN apt-get install ffmpeg libsm6 libxext6 -y
 
 RUN apt install valgrind -y 
 
 SHELL ["/bin/bash", "--login", "-i", "-c"]
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-RUN source /root/.bashrc && nvm install 16.18.0
+RUN source /root/.bashrc && nvm install 20.9.0
 SHELL ["/bin/bash", "--login", "-c"]
 
 WORKDIR /home
 RUN mkdir -p python
 WORKDIR /home/python
 
-RUN wget https://www.python.org/ftp/python/3.9.15/Python-3.9.15.tgz
-RUN tar -xvf Python-3.9.15.tgz
-RUN rm Python-3.9.15.tgz
-WORKDIR /home/python/Python-3.9.15
+RUN wget https://www.python.org/ftp/python/3.9.18/Python-3.9.18.tgz
+RUN tar -xvf Python-3.9.18.tgz
+RUN rm Python-3.9.18.tgz
+WORKDIR /home/python/Python-3.9.18
 RUN ./configure --enable-optimizations
 RUN make install 
 RUN pip3 install virtualenv --no-cache-dir
@@ -66,10 +61,6 @@ RUN apt-get install cmake -y
 WORKDIR /home
 RUN mkdir -p fish
 WORKDIR /home/fish
-
-RUN git clone https://github.com/fish-shell/fish-shell.git
-WORKDIR /home/fish/fish-shell
-RUN cmake .; make; make install
 
 WORKDIR /home
 RUN mkdir -p mount

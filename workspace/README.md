@@ -1,4 +1,8 @@
+# My wokspace to cook some egg fried rice
 
+```sh
+docker build -t wok -f wokspace.Dockerfile .
+```
 
 ```sh 
 docker run -d -t --gpus all --name workspace \
